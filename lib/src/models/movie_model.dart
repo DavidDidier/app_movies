@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
+/// It takes a list of dynamic objects and converts them into a list of Movie objects.
 class Movies {
   List<Movie> items = [];
 
@@ -14,6 +15,9 @@ class Movies {
     }
   }
 }
+
+/// The Movie class is a Dart class that has a bunch of properties that match the properties of the JSON
+/// object that we get back from the API
 
 class Movie {
   int voteCount = 0;

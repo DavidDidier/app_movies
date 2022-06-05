@@ -10,6 +10,14 @@ class HomePage extends StatelessWidget {
 
   HomePage({Key? key}) : super(key: key);
 
+  /// The main function of the application, it is the one that is in charge of building the application.
+  ///
+  /// Args:
+  ///   context (BuildContext): The current BuildContext.
+  ///
+  /// Returns:
+  ///   A Scaffold with a AppBar, a Container with a Column with two children, the first one is a
+  /// _swiperTarjetas() and the second one is a _footer().
   @override
   Widget build(BuildContext context) {
     movieProvider.getPopulars();
@@ -32,6 +40,18 @@ class HomePage extends StatelessWidget {
         ));
   }
 
+  /// A function that returns a widget, which is a FutureBuilder, which is a widget that returns a
+  /// widget, which is a CardSwiper, which is a widget that returns a widget, which is a Container,
+  /// which is a widget that returns a widget, which is a Center, which is a widget that returns a
+  /// widget, which is a CircularProgressIndicator, which is a widget that returns a widget, which is a
+  /// Container, which is a widget that returns a widget, which is a CardSwiper, which is a widget that
+  /// returns a widget, which is a FutureBuilder, which is a widget that returns a widget, which is a
+  /// Container, which is a widget that returns a widget, which is a Center, which is a widget that
+  /// returns a widget, which is a CircularProgressIndicator, which is a widget that returns a widget,
+  /// which is a Container, which is a widget that returns a widget, which is a CardSwiper, which is
+  ///
+  /// Returns:
+  ///   A FutureBuilder that returns a CardSwiper widget.
   Widget _swiperTarjetas() {
     return FutureBuilder(
         future: movieProvider.getInCine(),
@@ -46,6 +66,15 @@ class HomePage extends StatelessWidget {
         });
   }
 
+  /// It creates a container with a column inside. The column has two children. The first child is a
+  /// container with a text widget inside. The second child is a stream builder. The stream builder has a
+  /// stream and a builder. The stream is the popularsStream from the movieProvider. The builder is a
+  /// function that returns a MovieHorizontal widget. The MovieHorizontal widget has a list of movies and
+  /// a nextPage function. The list of movies is the data from the snapshot. The nextPage function is the
+  /// getPopulars function from the movieProvider.
+  ///
+  /// Returns:
+  ///   A widget that contains a column with a text and a streambuilder.
   Widget _footer() {
     return Container(
       width: double.infinity,

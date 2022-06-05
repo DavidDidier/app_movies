@@ -12,6 +12,13 @@ class MovieHorizontal extends StatelessWidget {
     viewportFraction: 0.25,
   );
 
+  /// It creates a pageview that is scrollable and has a page controller.
+  ///
+  /// Args:
+  ///   context (BuildContext): The current context of the widget.
+  ///
+  /// Returns:
+  ///   A Container with a height of 20% of the screen size.
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -35,6 +42,14 @@ class MovieHorizontal extends StatelessWidget {
     );
   }
 
+  /// It creates a card with the movie poster and title.
+  ///
+  /// Args:
+  ///   context (BuildContext): The context of the widget.
+  ///   movie (Movie): Movie
+  ///
+  /// Returns:
+  ///   A widget
   Widget _crearTarjeta(BuildContext context, Movie movie) {
     final movieTarjeta = Container(
       margin: const EdgeInsets.only(right: 12.0),

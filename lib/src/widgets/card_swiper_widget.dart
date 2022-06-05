@@ -7,6 +7,13 @@ class CardSwiper extends StatelessWidget {
 
   CardSwiper({required this.movies});
 
+  /// It creates a container with a padding of 0.9 and a child of Swiper.
+  ///
+  /// Args:
+  ///   context (BuildContext): The context of the widget.
+  ///
+  /// Returns:
+  ///   A widget that is a container with a child that is a swiper.
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
