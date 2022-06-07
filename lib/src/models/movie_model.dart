@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
-
 /// It takes a list of dynamic objects and converts them into a list of Movie objects.
 class Movies {
   List<Movie> items = [];
@@ -20,6 +18,8 @@ class Movies {
 /// object that we get back from the API
 
 class Movie {
+  String uniqueId = '';
+
   int voteCount = 0;
   int id = 0;
   bool video = false;
@@ -74,6 +74,14 @@ class Movie {
       return 'https://www.servicioaltoque.online/uploads/services/foo.jpg';
     } else {
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
+    }
+  }
+
+  getBackgroundImage() {
+    if (posterPath == null) {
+      return 'https://www.servicioaltoque.online/uploads/services/foo.jpg';
+    } else {
+      return 'https://image.tmdb.org/t/p/w500/$backdropPath';
     }
   }
 }

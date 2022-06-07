@@ -10,13 +10,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var movie;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Movies',
       initialRoute: '/',
       routes: {
         '/': (BuildContext context) => HomePage(),
-        'detail': (BuildContext context) => MovieDetail(),
+        'detail': (BuildContext context) => MovieDetail(movie: movie),
       },
     );
   }

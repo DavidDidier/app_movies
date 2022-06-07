@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/models/movie_model.dart';
 
+import '../pages/movie_details.dart';
+
 class MovieHorizontal extends StatelessWidget {
   final List<Movie> movies;
   final Function nextPage;
@@ -51,19 +53,23 @@ class MovieHorizontal extends StatelessWidget {
   /// Returns:
   ///   A widget
   Widget _crearTarjeta(BuildContext context, Movie movie) {
+    movie.uniqueId = '${movie.id}-post';
     final movieTarjeta = Container(
       margin: const EdgeInsets.only(right: 12.0),
       child: Column(
         children: <Widget>[
-          ClipRRect(
-              borderRadius: BorderRadius.circular(23.0),
-              child: FadeInImage(
-                image: NetworkImage(movie.getPosterImage()),
-                placeholder: const NetworkImage(
-                    'https://www.servicioaltoque.online/uploads/services/foo.jpg'),
-                fit: BoxFit.cover,
-                height: 180.0,
-              )),
+          Hero(
+              tag: movie.uniqueId,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(23.0),
+                  child: FadeInImage(
+                    image: NetworkImage(movie.getPosterImage()),
+                    placeholder: const NetworkImage(
+                        'https://www.servicioaltoque.online/uploads/services/foo.jpg'),
+                    fit: BoxFit.cover,
+                    height: 180.0,
+                    width: 100.0,
+                  ))),
           const SizedBox(height: 5.0),
           Text(
             movie.title,
@@ -77,7 +83,10 @@ class MovieHorizontal extends StatelessWidget {
     return GestureDetector(
       child: movieTarjeta,
       onTap: () {
-        Navigator.pushNamed(context, 'detail', arguments: movie);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MovieDetail(movie: movie)),
+        );
       },
     );
   }
