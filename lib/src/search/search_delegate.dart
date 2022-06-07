@@ -67,9 +67,8 @@ class SearchMovie extends SearchDelegate {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
           final movies = snapshot.data!;
-          return ListView(
-            children: movies.map((movie) {
-              return ListTile(
+          return ListView(children: movies.map((movie) {
+            return ListTile(
                 leading: FadeInImage(
                   image: NetworkImage(movie.getPosterImage()),
                   placeholder: const NetworkImage(
@@ -82,10 +81,8 @@ class SearchMovie extends SearchDelegate {
                 onTap: () {
                   close(context, null);
                   Navigator.pushNamed(context, 'details', arguments: movie);
-                },
-              );
-            }).toList(),
-          );
+                });
+          }));
         } else {
           return const Center(
             child: CircularProgressIndicator(),

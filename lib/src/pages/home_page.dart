@@ -36,14 +36,12 @@ class HomePage extends StatelessWidget {
                 icon: const Icon(Icons.search))
           ],
         ),
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              _swiperTarjetas(),
-              _footer(),
-            ],
-          ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            _swiperTarjetas(),
+            _footer(),
+          ],
         ));
   }
 
@@ -66,9 +64,9 @@ class HomePage extends StatelessWidget {
           if (snapshot.hasData) {
             return CardSwiper(movies: snapshot.data!);
           } else {
-            return Container(
+            return const SizedBox(
                 height: 600.0,
-                child: const Center(child: CircularProgressIndicator()));
+                child: Center(child: CircularProgressIndicator()));
           }
         });
   }
@@ -83,7 +81,7 @@ class HomePage extends StatelessWidget {
   /// Returns:
   ///   A widget that contains a column with a text and a streambuilder.
   Widget _footer() {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Column(
         children: <Widget>[

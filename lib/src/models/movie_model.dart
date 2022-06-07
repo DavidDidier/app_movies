@@ -1,4 +1,6 @@
 /// It takes a list of dynamic objects and converts them into a list of Movie objects.
+// ignore_for_file: unnecessary_null_comparison
+
 class Movies {
   List<Movie> items = [];
 

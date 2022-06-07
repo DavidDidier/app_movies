@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 import 'package:peliculas_app/src/models/movie_model.dart';
@@ -5,7 +7,7 @@ import 'package:peliculas_app/src/models/movie_model.dart';
 class CardSwiper extends StatelessWidget {
   final List<Movie> movies;
 
-  CardSwiper({required this.movies});
+  const CardSwiper({required this.movies});
 
   /// It creates a container with a padding of 0.9 and a child of Swiper.
   ///

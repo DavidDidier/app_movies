@@ -5,12 +5,14 @@ import 'package:peliculas_app/src/providers/movies_provider.dart';
 import '../models/actors_model.dart';
 
 class MovieDetail extends StatelessWidget {
-  const MovieDetail({Key? key, required this.movie}) : super(key: key);
-
-  final Movie movie;
+  const MovieDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //ModalRoute<Movie>? movie =
+    //  ModalRoute.of<Movie>(context)?.settings.arguments as ModalRoute<Movie>?;
+    final Movie movie = ModalRoute.of(context)?.settings.arguments as Movie;
+
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -45,46 +47,46 @@ class MovieDetail extends StatelessWidget {
             placeholder: const NetworkImage(
                 'https://www.servicioaltoque.online/uploads/services/foo.jpg'),
             fit: BoxFit.fill,
-            image: NetworkImage(movie.backdropPath),
-            fadeInDuration: const Duration(microseconds: 200)),
+            image: NetworkImage(movie.backdropPath!),
+            fadeInDuration: const Duration(milliseconds: 200)),
       ),
     );
   }
 
   Widget _titlePoster(context, Movie movie) {
-    return Container(
-      child: Row(
-        children: <Widget>[
-          Hero(
-            tag: movie.uniqueId,
-            child: ClipRRect(
-              child: Image(
-                  image: NetworkImage(movie.getPosterImage()),
-                  height: 200.0,
-                  width: 15.0),
-            ),
+    return Row(
+      children: <Widget>[
+        Hero(
+          tag: movie.uniqueId,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Image(
+                image: NetworkImage(movie.getPosterImage()),
+                height: 200.0,
+                width: 15.0),
           ),
-          Flexible(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(movie.title,
-                  style: Theme.of(context).textTheme.headline6,
-                  overflow: TextOverflow.ellipsis),
-              Text(movie.originalTitle,
-                  style: Theme.of(context).textTheme.subtitle1,
-                  overflow: TextOverflow.ellipsis),
-              Row(
-                children: <Widget>[
-                  const Icon(Icons.star),
-                  Text(movie.voteAverage.toString(),
-                      style: Theme.of(context).textTheme.subtitle1)
-                ],
-              )
-            ],
-          ))
-        ],
-      ),
+        ),
+        Flexible(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text(movie.title,
+                style: Theme.of(context).textTheme.headline6,
+                overflow: TextOverflow.ellipsis),
+            Text(movie.originalTitle,
+                style: Theme.of(context).textTheme.subtitle1,
+                overflow: TextOverflow.ellipsis),
+            Row(
+              children: <Widget>[
+                const Icon(Icons.star),
+                Center(
+                    child: Text(movie.voteAverage.toString(),
+                        style: Theme.of(context).textTheme.subtitle1))
+              ],
+            )
+          ],
+        ))
+      ],
     );
   }
 
@@ -127,24 +129,22 @@ class MovieDetail extends StatelessWidget {
   }
 
   Widget _actorTarjeta(Actor actor) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: FadeInImage(
-                placeholder: const NetworkImage(
-                    'https://www.servicioaltoque.online/uploads/services/foo.jpg'),
-                fit: BoxFit.fill,
-                image: NetworkImage(actor.getPhoto()),
-                height: 135.0,
-              )),
-          Text(
-            actor.name,
-            overflow: TextOverflow.ellipsis,
-          )
-        ],
-      ),
+    return Column(
+      children: <Widget>[
+        ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: FadeInImage(
+              placeholder: const NetworkImage(
+                  'https://www.servicioaltoque.online/uploads/services/foo.jpg'),
+              fit: BoxFit.fill,
+              image: NetworkImage(actor.getPhoto()),
+              height: 135.0,
+            )),
+        Text(
+          actor.name,
+          overflow: TextOverflow.ellipsis,
+        )
+      ],
     );
   }
 }

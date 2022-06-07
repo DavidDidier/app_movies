@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/models/movie_model.dart';
 
-import '../pages/movie_details.dart';
-
 class MovieHorizontal extends StatelessWidget {
   final List<Movie> movies;
   final Function nextPage;
 
-  MovieHorizontal({required this.movies, required this.nextPage});
+  MovieHorizontal({Key? key, required this.movies, required this.nextPage})
+      : super(key: key);
 
   final _pageController = PageController(
     initialPage: 1,
@@ -32,7 +31,7 @@ class MovieHorizontal extends StatelessWidget {
       }
     });
 
-    return Container(
+    return SizedBox(
       height: screenSize.height * 0.2,
       child: PageView.builder(
         pageSnapping: false,
@@ -83,10 +82,7 @@ class MovieHorizontal extends StatelessWidget {
     return GestureDetector(
       child: movieTarjeta,
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => MovieDetail(movie: movie)),
-        );
+        Navigator.pushNamed(context, 'details', arguments: movie);
       },
     );
   }
